@@ -116,7 +116,6 @@ export class AuthService {
   }
 
 
-
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!'
     if (!errorRes.error || !errorRes.error.error) {
@@ -129,10 +128,9 @@ export class AuthService {
         break;
       case 'INVALID_PASSWORD': errorMessage = 'This password is not correct';
         break;
+      case 'TOO_MANY_ATTEMPTS_TRY_LATER': errorMessage = 'Too many unsuccessful login attempts.';
+        break;
     }
     return throwError(errorMessage);
   }
-
 }
-
-
